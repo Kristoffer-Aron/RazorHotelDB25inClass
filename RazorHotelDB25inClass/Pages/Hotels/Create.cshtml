@@ -1,0 +1,29 @@
+﻿@page
+@model RazorHotelDB25inClass.Pages.Hotels.CreateModel
+@{
+    ViewData["Title"] = "Add Hotel";
+}
+
+
+<form method="post">
+    <div class="form-group">
+        <label asp-for="@Model.Hotel.HotelNr" class="control-label"></label>
+        <input asp-for="@Model.Hotel.HotelNr" class="form-control" />
+        <span asp-validation-for="@Model.Hotel.HotelNr" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="@Model.Hotel.Navn" class="control-label"></label>
+        <input asp-for="@Model.Hotel.Navn" class="form-control" />
+        <span asp-validation-for="@Model.Hotel.Navn" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="@Model.Hotel.Adresse" class="control-label"></label>
+        <input asp-for="@Model.Hotel.Adresse" class="form-control" />
+        <span asp-validation-for="@Model.Hotel.Adresse" class="text-danger"></span>
+    </div>
+    <p>
+        <div class="form-group">
+            <input type="submit" value="Create" class="btn btn-primary" />
+        </div>
+    </p>
+</form>

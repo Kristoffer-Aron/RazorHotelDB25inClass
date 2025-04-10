@@ -1,0 +1,71 @@
+﻿@page
+@using RazorHotelDB25inClass.Models
+@model RazorHotelDB25inClass.Pages.Rooms.GetAllRoomsModel
+@{
+}
+
+<form method="get">
+    <p>
+        <div class="form-group">
+            <label class="custom-control-label">Sort By</label>
+            <input type="radio" asp-for="@Model.SortBy" value="RoomNr" onclick="this.form.submit()">RoomNr</input>
+            <input type="radio" asp-for="@Model.SortBy" value="Types" onclick="this.form.submit()">Types</input>
+            <input type="radio" asp-for="@Model.SortBy" value="Price" onclick="this.form.submit()">Price</input>
+        </div>
+
+        <div class="form-group">
+            <label class="custom-control-label">Sort Order</label>
+            <select asp-for="@Model.SortOrder" onchange="this.form.submit()">
+                <option value="Ascending">Ascending</option>
+                <option value="Descending">Descending</option>
+            </select>
+        </div>
+    </p>
+</form>
+
+<h4>List of rooms</h4>
+
+<h5>Number of rooms is: @Model.Rooms.Count</h5>
+
+<a asp-page="Create" asp-route-id="@Model.HotelNr" class="btn btn primary" style="color: white; background-color: gray; border-color: gray;">Create a room</a>
+<table>
+    <thead style="background-color: darkmagenta; border: solid 1px; border-color: darkorchid;">
+        <tr>
+            <th>Room no</th>
+            <th>Hotel no</th>
+            <th>Type</th>
+            <th>Price</th>
+            <th>Actions</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody style ="background-color: coral; text-align: center;">
+        @if (Model.Rooms.Count() != 0)
+        {
+            @foreach (Room item in Model.Rooms)
+            {
+                <tr>
+                    <td style="border: solid 1px; border-color: white;">@item.RoomNr</td>
+                    <td style="border: solid 1px; border-color: white;">@item.HotelNr</td>
+                    <td style="border: solid 1px; border-color: white;">@item.Types</td>
+                    <td style="border: solid 1px; border-color: white;">@item.Pris</td>
+                    <td>
+                        <p>
+                            <a asp-page="Update" asp-route-roomNr="@item.RoomNr" asp-route-hotelNr="@item.HotelNr" class="btn btn primary" style="color: white; background-color: gray; border-color: gray;">Rediger</a>
+                        </p>
+                    </td>
+
+                    <td>
+                        <p>
+                            <a asp-page="Delete" asp-route-deleteId="@item.HotelNr" asp-route-roomId="@item.RoomNr">Delete</a>
+                        </p>
+
+                    </td>
+                </tr>
+
+            }
+
+        }
+
+    </tbody>
+</table>

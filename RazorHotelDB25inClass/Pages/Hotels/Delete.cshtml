@@ -1,0 +1,35 @@
+﻿@page
+@model RazorHotelDB25inClass.Pages.Hotels.DeleteModel
+@{
+
+    ViewData["Title"] = "Delete Hotel";
+}
+<h1>Delete Hotel</h1>
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div class="form-group">
+                <label asp-for="@Model.Hotel.HotelNr" class="control-label"></label>
+                <input asp-for="@Model.Hotel.HotelNr" readonly class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Hotel.Navn" class="control-label"></label>
+                <input asp-for="@Model.Hotel.Navn" readonly class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Hotel.Adresse" class="control-label"></label>
+                <input asp-for="@Model.Hotel.Adresse" readonly class="form-control" />
+            </div>
+            <span class="text-danger">@Model.MessageError</span>
+            <div class="form-group">
+                <input asp-for="@Model.Confirm" type="checkbox" id="Confirm" /> Confirm you wish to delete this hotel
+            </div>
+            <div class="formgroup">
+                <input type="submit" value="Delete" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+    <div>
+        <a asp-page="GetAllHotels">Back to List</a>
+    </div>
+</div>
